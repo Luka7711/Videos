@@ -1,20 +1,26 @@
 import React from "react";
 
 class SearchBar extends React.Component {
-  state = { term: "sopranos" };
+  state = { term: "hello" };
 
-  inputChange = (e) => {
+  onInputChange = (e) => {
     this.setState({ term: e.target.value });
+  };
+
+  onFormSubmit = (e) => {
+    e.preventDefault();
+    //TODO: Make sure we call
+    //callback from parent component
   };
 
   render() {
     return (
       <div className="search-bar ui segment">
-        <form className="ui form">
+        <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="field">
             <label>Video Search</label>
             <input
-              onChange={this.inputChange}
+              onChange={this.onInputChange}
               value={this.state.term}
               type="text"
             />
